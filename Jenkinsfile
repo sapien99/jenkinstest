@@ -21,9 +21,8 @@ pipeline {
                 // unstash 'dist'
                 // show some ansible magic
                 sh 'ansible --version'
-                sh 'ls -la'
                 checkout scm
-                sh 'ansible-playbook -i /etc/inventory.yaml playbook.yml'
+                sh 'ansible-playbook -i /etc/inventory.yaml playbook.yaml'
             }
         }
     }
