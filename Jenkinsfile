@@ -22,7 +22,7 @@ pipeline {
                 // show some ansible magic
                 sh 'ansible --version'
                 checkout scm
-                sh 'ansible-playbook -i /etc/inventory.yaml playbook.yaml'
+                sh 'ansible-playbook -i /etc/inventory.yaml deployment/playbook.yaml'
             }
         }
     }
