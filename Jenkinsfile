@@ -7,7 +7,7 @@ pipeline {
             }
             steps {
                 // checkout from scm
-                checkout scm
+                // checkout scm
                 // show some magic of the container
                 sh 'node --version'
                 // stash some buildartefacts using "dist" as their qualifier
@@ -18,9 +18,12 @@ pipeline {
             agent any
             steps {
                 // unstash some buildartefacts from a previous stage using "dist" as their qualifier
-                unstash 'dist'
+                // unstash 'dist'
                 // show some ansible magic
                 sh 'ansible --version'
+                sh 'ls -la'
+                checkout scm
+                sh 'ansible-playbook -i /etc/inventory.yaml playbook.yml'
             }
         }
     }
