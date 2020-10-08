@@ -1,5 +1,5 @@
 pipeline {
-    agent none
+    agent any
     stages {
         stage('Build') {
             agent {
@@ -13,7 +13,7 @@ pipeline {
             }
         }
         stage('Ansible') {
-            agent none
+            agent any
             steps {
                 // unstash some buildartefacts from a previous stage using "dist" as their qualifier
                 // show some ansible magic
