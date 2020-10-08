@@ -9,7 +9,7 @@ pipeline {
                 sh 'node --version'
                 stash includes: 'playbook.yaml', name: 'dist'
             }
-        },
+        }
         stage('Ansible') {
             agent none
             steps {
