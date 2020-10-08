@@ -11,7 +11,7 @@ pipeline {
                 // show some magic of the container
                 sh 'node --version'
                 // stash some buildartefacts using "dist" as their qualifier
-                stash includes: 'playbook.yaml', name: 'dist'
+                // stash includes: 'playbook.yaml', name: 'dist'
             }
         }
         stage('Ansible') {
