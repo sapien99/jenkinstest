@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            agent any
+            steps {
+                // checkout from scm
+                checkout scm
+                dir("docker-build") {
+                    // do docker build
+                    docker build -t sample .
+                }
+            }
+        }
+        stage('Ansible') {
+            agent any
+            steps {
+                dir("docker-build") {
+                    sh 'ansible-playbook -i /etc/ansible/inventory.yaml deployment/playbook.yaml'
+                }
+            }
+        }
+    }
+    post { 
+        always { 
+            cleanWs()
+        }
+    }
+}
